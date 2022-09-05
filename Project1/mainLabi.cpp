@@ -12,11 +12,29 @@
 #include <vector>
 #include <unordered_map>
 #include <cmath>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
 namespace dendid4
 {
+	template <typename T>
+	std::string toString(T val)
+	{
+		std::ostringstream oss;
+		oss << val;
+		return oss.str();
+	}
+
+	template<typename T>
+	T fromString(const std::string& s)
+	{
+		std::istringstream iss(s);
+		T res;
+		iss >> res;
+		return res;
+	}
 	void Zadanie1PrintPrivet(string val)
 	{
 		std::cout << val;
@@ -72,6 +90,7 @@ void lb2Zadanie2(double a, double x)
 //laba 4
 void lb4Zadanie1()
 {
+	using namespace dendid4;
 	/*int** ptrarray = new int* [stroka];
 	for (int count = 0; count < 2; count++)
 		ptrarray[count] = new int[stolb];
@@ -130,7 +149,106 @@ void lb4Zadanie1()
 	cout << "summa = " << sum;
 }
 
+int Sum(int n)
+{
+	int sum = 0;
+	while (n)
+	{
+		sum += n % 10;
+		n /= 10;
+	}
+	return sum;
+}
 
+void lb4Zadanie2()
+{
+	const int SIZE = 5;
+	const int R_MIN = 10;
+	const int R_MAX = 50;
+
+	int arr[SIZE][SIZE];
+	int i, j;
+
+	srand(time(NULL));
+
+	for (i = 0; i < SIZE; ++i)
+	{
+		for (j = 0; j < SIZE; ++j)
+		{
+			arr[i][j] = rand() % int((R_MAX - R_MIN + 1) + R_MIN);
+			// или тупо: arr[i][j] = rand()%101-50;
+		}
+	}
+
+	for (i = 0; i < SIZE; ++i)
+	{
+		for (j = 0; j < SIZE; ++j)
+		{
+			std::cout << arr[i][j]<<"   ";
+		}
+		std::cout << "\n";
+	}
+
+	int arr2[SIZE][SIZE];
+	std::cout << "New" << endl;
+	for (i = 0; i < SIZE; ++i)
+	{
+		for (j = 0; j < SIZE; ++j)
+		{
+			arr2[i][j] = Sum(arr[i][j]);
+			std::cout << arr2[i][j] << "  ";
+		}
+		std::cout << "\n";j
+;	}
+}
+
+void reverseDiagonal()
+{
+	int array[5][5];
+	const int R_MIN = 10;
+	const int R_MAX = 50;
+	for (int k = 0; k < 5; ++k)
+	{
+		for (int l = 0; l < 5; ++l)
+		{
+			array[k][l] = rand() % int((R_MAX - R_MIN + 1) + R_MIN);
+			// или тупо: arr[i][j] = rand()%101-50;
+		}
+	}
+
+	for (int i = 0; i < 5; ++i) {
+		for (int j = 0; j < 5; ++j)
+			std::cout << array[i][j] << "   ";
+		std::cout << endl;
+	}
+	std::cout << "New" << endl;
+	int i = 0, j = 5;
+	while (i < j) {
+
+		// For reversing elements of major
+		// diagonal.
+		swap(array[i][i], array[j - 1][j - 1]);
+
+		// For reversing elements of minor
+		// diagonal.
+		swap(array[i][j - 1], array[j - 1][i]);
+
+		i++;
+		j--;
+	}
+
+	// Print matrix after reversals.
+	for (int i = 0; i < 5; ++i) {
+		for (int j = 0; j < 5; ++j)
+			std::cout << array[i][j] << "   ";
+		std::cout << endl;
+	}
+}
+
+void lb4Zadanie3()
+{
+	reverseDiagonal();
+}
 
 int main()
 {
@@ -157,8 +275,9 @@ int main()
 	//laba nomer 3
 
 	//laba nomer 4
-	/**/lb4Zadanie1();
-
+	/*lb4Zadanie1();
+	lb4Zadanie2();
+	lb4Zadanie3();*/
 	return 1;
 }
 
