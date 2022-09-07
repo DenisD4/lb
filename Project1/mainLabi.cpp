@@ -9,18 +9,38 @@
 
 #pragma once
 #include <iostream>
-#include <vector>
+//#include <vector>
 #include <unordered_map>
 #include <cmath>
 #include <string>
-#include <sstream>
-#include <clocale>
-#include <locale>
+//include <sstream>
+//#include <clocale>
+//#include <locale>
 #include <Windows.h>
 using namespace std;
 
 namespace dendid4
 {
+	void bubbleSort(int list[], int listLength)
+	{
+		while (listLength--)
+		{
+			bool swapped = false;
+
+			for (int i = 0; i < listLength; i++)
+			{
+				if (list[i] > list[i + 1])
+				{
+					swap(list[i], list[i + 1]);
+					swapped = true;
+				}
+			}
+
+			if (swapped == false)
+				break;
+		}
+	}
+
 	template <typename T>
 	std::string toString(T val)
 	{
@@ -108,25 +128,7 @@ namespace dendid4
 //		std::cout << i << endl;
 //}
 
-void bubbleSort(int list[], int listLength)
-{
-	while (listLength--)
-	{
-		bool swapped = false;
 
-		for (int i = 0; i < listLength; i++)
-		{
-			if (list[i] > list[i + 1])
-			{
-				swap(list[i], list[i + 1]);
-				swapped = true;
-			}
-		}
-
-		if (swapped == false)
-			break;
-	}
-}
 
 //int PerevodV2(int val)
 //{
@@ -388,6 +390,11 @@ void lb5Zadanie3()
 		}
 		cout << str[i];
 	}
+}
+
+void lb6Zadanie1()
+{
+
 }
 
 int main()
