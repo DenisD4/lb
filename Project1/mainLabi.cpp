@@ -659,7 +659,146 @@ namespace lb8z2
 //laba 9
 namespace lb9
 {
+	class z1uravn
+	{
+	public:
+		z1uravn(int x = 17, int y = 4)
+			: x(x),
+			y(y)
+		{}
+		void getVal()
+		{
+			std::cout << "uravn: X^2+Y-2, X=17, Y=4. Result = " << (pow(x, 2) + y - 2);
+		}
+	private:
+		int x = 17;
+		int y = 4;
+	};
 
+	class Zveri_Lesa
+	{
+	public:
+		Zveri_Lesa(int nomer = 1, string name = "None", string discript = "None")
+			: nomer_zveria(nomer),
+			name_of_piece(name),
+			discription(discript)
+		{}
+
+		void setInfo(int nomer = 1, string name = "None", string discript = "None")
+		{
+			nomer_zveria = (nomer);
+			name_of_piece = (name);
+			discription = (discript);
+		}
+
+		void getInfo()
+		{
+			std::cout << "Nomer beast = " << nomer_zveria << " Vid " << name_of_piece << "\n" << "Discription: " << discription << endl;
+		}
+	private:
+		int nomer_zveria;
+		string name_of_piece;
+		string discription;
+	};
+}
+
+namespace lb10
+{
+	class Tovar
+	{
+	public:
+		Tovar (string nazv = "Nissan", double grivna = 100000, string production = "Japanese")
+			: name(nazv),
+			grivna(grivna),
+			production(production),
+			usd(grivna * 36.9)
+		{}
+		//1 USD = 36,9 gr 08.09.2022
+		string getName()
+		{
+			return name;
+		}
+		double PerevodVUSD(double griv = 100000)
+		{
+			if (this->name != "Toyoto")
+			{
+				if (griv)
+					return (griv * 36.9);
+				else
+					return (grivna * 36.9);
+			}
+			else
+			{
+				if (griv)
+					return (griv * 36.9 + 666);
+				else
+					return (grivna * 36.9 + 666);
+			}
+				
+		}
+	private:
+		string name;
+		double grivna;
+		string production;
+		double usd;
+	};
+
+	class Triangular
+	{
+	public:
+		Triangular(double kat1 = 1, double kat2 = 1)
+			: katet1(kat1),
+			katet2(kat2),
+			ploshad(katet1 * katet2 * (0.5)) {}
+		double plosh(double kat1, double kat2)
+		{
+			std::cout << "Ploshad treug = " << ((0.5) * kat1 * kat2) << endl;
+			return (((0.5) * kat1 * kat2));
+		}
+		double getKat1()
+		{
+			return this->katet1;
+		}
+		double getKat2()
+		{
+			return this->katet2;
+		}
+		void vivodPloshDefault()
+		{
+			ploshad = katet1 * katet2 * (0.5);
+			std::cout << "Ploshad treug = " << ploshad << endl;
+		}
+		void setKatets(double kat1, double kat2)
+		{
+			katet1 = (kat1);
+			katet2 = (kat2);
+		}
+
+	private:
+		double katet1;
+		double katet2;
+		double ploshad;
+	};
+
+	class Prisma : public Triangular
+	{
+	public:
+		Prisma(double h)
+			: h(h) {}
+
+		void getV(Triangular tri)
+		{
+			std::cout << "V = " << (this->h * tri.plosh(tri.getKat1(), tri.getKat2()));
+		}
+
+		void getV()
+		{
+			std::cout << "V = " << (this->h * this->plosh(this->getKat1(), this->getKat2())) << endl;
+		}
+
+	private:
+		double h;
+	};
 }
 
 int main()
@@ -835,7 +974,39 @@ int main()
 
 	//Laba 9
 	//z1 X^2+Y-2, X=17, Y=4
-	
+	using namespace lb9;
+	//z1uravn gg;
+	//gg.getVal();
+	//z2
+	/*Zveri_Lesa Sinitsa(1, "Kolia", "Ili zhuravl?");
+	Sinitsa.getInfo();
+	Sinitsa.setInfo(2, "Kolian", "V nebe");
+	Sinitsa.getInfo();*/
+
+	//laba 10
+	using namespace lb10;
+	//z1
+	/*Triangular new_treug;
+	new_treug.vivodPloshDefault();
+	int kat1 = 0;
+	int kat2 = 0;
+	std::cout << "Vvedite kateti\n";
+	std::cin >> kat1;
+	std::cin >> kat2;
+	new_treug.setKatets(kat1,kat2);
+	new_treug.vivodPloshDefault();*/
+	//z2
+	/*Tovar car;
+	std::cout << car.getName() << " Price = " << car.PerevodVUSD() << endl;
+	Tovar car2("Toyoto");
+	std::cout << car2.getName() << " Price = " << car2.PerevodVUSD() << endl;*/
+	//z3
+	//Prisma pr(10);
+	//pr.getV();
+	//pr.getV(new_treug);
+
+	//laba 11
+
 }
 
  
