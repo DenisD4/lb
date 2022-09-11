@@ -931,12 +931,12 @@ int main()
 	//lb4Zadanie3();
 
 	//laba 5
-	//lb5Zadanie1();
-	/*int kolvo_bukv;
+	/*lb5Zadanie1();
+	int kolvo_bukv;
 	std::cout << "Vvedite chislo bukv" << endl;
 	std::cin >> kolvo_bukv;
-	lb5Zadanie2(kolvo_bukv);*/
-	//lb5Zadanie3();
+	lb5Zadanie2(kolvo_bukv);
+	lb5Zadanie3();*/
 
 
 	//laba 6
@@ -1124,9 +1124,9 @@ int main()
 		LineTo(hDC, 10 * x + 100, -10 * sin(x) + 85);
 	}
 	system("pause");
-	return 1;*/
+	return 1;
 
-	/*using namespace std;
+	using namespace std;
 	if (GetSystemMetrics(SM_MOUSEPRESENT)) cout << ("true");
 	_getch();
 
@@ -1175,10 +1175,10 @@ int main()
 	SelectObject(hDC, hOldPen);
 	DeleteObject(hPen);
 	_getch();
-	return 0;*/
+	return 0;*
 
 	//z2 lb 12
-	/*setlocale(LC_CTYPE, "Russian");
+	/setlocale(LC_CTYPE, "Russian");
 	int n = 0;
 	cout << "Введите сторону квадрата: ";
 	//cin >> n;
@@ -1197,7 +1197,7 @@ int main()
 	for (int i = 10; i > 0; i--)
 	{
 		cout << "5";
-	}*/
+	}
 
 	// z1 lb 12
 	HDC hDC = GetDC(GetConsoleWindow());
@@ -1219,7 +1219,7 @@ int main()
 	LineTo(hDC, 230, 110);
 	LineTo(hDC, 130, 110);
 	LineTo(hDC, 130, 0);
-	_getch();
+	_getch();*/
 }
 
  
