@@ -19,6 +19,8 @@
 #include <Windows.h>
 #include <map>
 #include <algorithm>
+#include "conio.h"
+
 using namespace std;
 
 namespace dendid4
@@ -801,6 +803,92 @@ namespace lb10
 	};
 }
 
+namespace lb11
+{
+	class Detsad
+	{
+	public:
+		Detsad(string name = "None", string adress = "None")
+		: name(name),
+		adress(adress)
+		{}
+	void setInfo()
+	{
+		std::cout << "Vvedite znaxhenia Nazvania i Adress" << endl;
+		string n;
+		string h;
+		std::cin >> n;
+		std::cin >> h;
+		name = n;
+		adress = h;
+	}
+	void getInfo()
+	{
+		std::cout << name << "\t" << adress;
+	}
+	private:
+		string name;
+		string adress;
+	};
+	class Group : public Detsad
+	{
+	public:
+		Group(int nomer = 0, int age = 0, int kolvo = 0)
+			:nomer(nomer),
+			age(age),
+			kolvo(kolvo)
+		{}
+		virtual void getInfoGroup()
+		{
+			this->getInfo();
+			std::cout << endl;
+			std::cout << nomer << "\t" << age << "\t" << kolvo;
+		}
+		void setInfoGroup()
+		{
+			std::cout << "Vvedite znaxhenia Nomera, Age, Kolvo" << endl;
+			int n;
+			int h;
+			int k;
+			std::cin >> n;
+			std::cin >> h;
+			std::cin >> k;
+			nomer = n;
+			age = h;
+			kolvo = k;
+		}
+
+		void getInfoGroup(Detsad h)
+		{
+			h.getInfo();
+			std::cout << endl;
+			std::cout << nomer << "\t" << age << "\t" << kolvo;
+		}
+	private:
+		int nomer;
+		int age;
+		int kolvo;
+	};
+
+	class D4 : public Group
+	{
+	public:
+		void getInfoGroup() override
+		{
+			std::cout << imia;
+			std::cout << endl;
+			Group::getInfoGroup();
+		}
+	private:
+		string imia = "Denis";
+	};
+}
+
+namespace lb12
+{
+
+}
+
 int main()
 {
 	//laba nomer 1
@@ -1005,8 +1093,133 @@ int main()
 	//pr.getV();
 	//pr.getV(new_treug);
 
-	//laba 11
+	//laba 11 dodelat std::cout
+	using namespace lb11;
+	/*Detsad gg("Sh", "ggwp");
+	//gg.getInfo();
+	gg.setInfo();
+	gg.getInfo();
+	std::cout << endl;
+	Group gg1(15,22,56);
+	gg1.getInfoGroup(gg);
+	std::cout << endl;
+	gg1.setInfoGroup();
+	gg1.getInfoGroup(gg);*/
+	//D4 d4;
+	//d4.getInfoGroup();
+	
+	//laba 12
+	//primeri
+	/*float x;
+	HDC hDC = GetDC(GetConsoleWindow());
+	HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+	SelectObject(hDC, Pen);
+	MoveToEx(hDC, 0, 85, NULL);
+	LineTo(hDC, 200, 85);
+	MoveToEx(hDC, 100, 0, NULL);
+	LineTo(hDC, 100, 170);
+	for (x = -8.0f; x <= 8.0f; x += 0.01f) // O(100,85) - center
+	{
+		MoveToEx(hDC, 10 * x + 100, -10 * sin(x) + 85, NULL);//10 - scale
+		LineTo(hDC, 10 * x + 100, -10 * sin(x) + 85);
+	}
+	system("pause");
+	return 1;*/
 
+	/*using namespace std;
+	if (GetSystemMetrics(SM_MOUSEPRESENT)) cout << ("true");
+	_getch();
+
+	printf("\nColor :\n1-Red\n2-Green\n3-White\n4-black\n");
+	int iColor, Color1, Color2, Color3;
+	cin >> iColor;
+	switch (iColor) {
+	case 1:
+		Color1 = 255;
+		Color2 = 0;
+		Color3 = 0;
+		break;
+	case 2:
+		Color1 = 0;
+		Color2 = 255;
+		Color3 = 0;
+		break;
+	case 3:
+		Color1 = 255;
+		Color2 = 255;
+		Color3 = 255;
+		break;
+	case 4:
+		Color1 = 0;
+		Color2 = 0;
+		Color3 = 0;
+		break;
+	default:
+		cout << "Color is not found" << endl;
+		_getch();
+		return 0;
+		break;
+	}
+	POINT cp;
+	HDC hDC = GetDC(NULL);
+	HPEN hPen = CreatePen(PS_SOLID, 2, RGB(Color1, Color2, Color3));
+	HPEN hOldPen = (HPEN)SelectObject(hDC, hPen);
+
+	GetCursorPos(&cp);
+	MoveToEx(hDC, cp.x, cp.y, NULL);
+	while ((cp.x != 0) && (cp.y != 0)) {
+		GetCursorPos(&cp);
+		LineTo(hDC, cp.x, cp.y);
+	}
+	SetCursorPos(cp.x, cp.y);
+	SelectObject(hDC, hOldPen);
+	DeleteObject(hPen);
+	_getch();
+	return 0;*/
+
+	//z2 lb 12
+	/*setlocale(LC_CTYPE, "Russian");
+	int n = 0;
+	cout << "Введите сторону квадрата: ";
+	//cin >> n;
+	cout << endl;
+	for (int i = 0; i < 10; i++)
+		cout << "5"; // верхняя стенка
+	cout << endl;
+	for (int i = 1; i < 9; i++)
+	{
+		cout << "5";  // левая стенка
+		for (int i = 1; i < 9; i++)
+			cout << " ";
+
+		cout << "5" << endl; // правая стенка
+	}
+	for (int i = 10; i > 0; i--)
+	{
+		cout << "5";
+	}*/
+
+	// z1 lb 12
+	HDC hDC = GetDC(GetConsoleWindow());
+	HPEN Pen = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+	SelectObject(hDC, Pen);
+	MoveToEx(hDC, 10, 0, NULL);
+	LineTo(hDC, 110, 0 );
+	MoveToEx(hDC, 10, 0, NULL);
+	LineTo(hDC, 10,110);
+	MoveToEx(hDC, 10, 110, NULL);
+	LineTo(hDC, 110, 110);
+	MoveToEx(hDC, 110, 110, NULL);
+	LineTo(hDC, 110, 0);
+	MoveToEx(hDC, 120, 110, NULL);
+	LineTo(hDC, 120, 0);
+	//2-ond sq
+	MoveToEx(hDC, 130, 0, NULL);
+	LineTo(hDC, 230, 0);
+	LineTo(hDC, 230, 110);
+	LineTo(hDC, 130, 110);
+	LineTo(hDC, 130, 0);
+	_getch();
 }
 
  
